@@ -1,15 +1,13 @@
 use crate::core::world::mechanics::die::Die;
-use super::module::Module;
-use crate::impl_base_module;
 
-pub struct DicePool {
+pub struct DicePoolModule {
     label: String,
     die: Die,
     max_quantity: u16,
     remaining_quantity: u16,
 }
 
-impl DicePool {
+impl DicePoolModule {
     pub fn new(label: String, die: Die, max_quantity: u16) -> Self {
         Self { label: label, die: die, remaining_quantity: max_quantity, max_quantity: max_quantity }
     }
@@ -75,8 +73,9 @@ impl DicePool {
     }
 }
 
-impl_base_module!(DicePool,);
-impl Default for DicePool {
+crate::impl_reflection!(DicePoolModule,);
+impl super::module::Module for DicePoolModule {}
+impl Default for DicePoolModule {
     fn default() -> Self {
         Self {
             label: String::from("Dice pool"),
@@ -91,8 +90,8 @@ impl Default for DicePool {
 mod tests {
     use super::*;
 
-    fn setup_pool(max: u16) -> DicePool {
-        DicePool::new("Test Pool".to_string(), Die::D6, max)
+    fn setup_pool(max: u16) -> DicePoolModule {
+        DicePoolModule::new("Test Pool".to_string(), Die::D6, max)
     }
 
     #[test]

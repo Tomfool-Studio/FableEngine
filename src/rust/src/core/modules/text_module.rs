@@ -1,6 +1,3 @@
-use super::module::Module;
-use crate::impl_base_module;
-
 pub struct TextModule {
     name: String,
     text: String,
@@ -28,7 +25,8 @@ impl TextModule {
     }
 }
 
-impl_base_module!(TextModule,);
+crate::impl_reflection!(TextModule,);
+impl super::module::Module for TextModule {}
 impl Default for TextModule {
     fn default() -> Self {
         TextModule {

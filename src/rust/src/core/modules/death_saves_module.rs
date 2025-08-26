@@ -1,6 +1,3 @@
-use super::module::Module;
-use crate::impl_base_module;
-
 pub struct DeathSaveModule {
     successes: u8,
     failures: u8,
@@ -62,7 +59,8 @@ impl DeathSaveModule {
     }
 }
 
-impl_base_module!(DeathSaveModule,);
+crate::impl_reflection!(DeathSaveModule,);
+impl super::module::Module for DeathSaveModule {}
 impl Default for DeathSaveModule {
     fn default() -> Self {
         DeathSaveModule {

@@ -1,6 +1,3 @@
-use super::module::Module;
-use crate::impl_base_module;
-
 pub struct HealthModule {
     max_health: i32,
     current_health: i32,
@@ -53,7 +50,8 @@ impl HealthModule {
     }
 }
 
-impl_base_module!(HealthModule,);
+crate::impl_reflection!(HealthModule,);
+impl super::module::Module for HealthModule {}
 impl Default for HealthModule {
     fn default() -> Self {
         HealthModule {

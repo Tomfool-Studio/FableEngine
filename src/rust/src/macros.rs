@@ -1,8 +1,8 @@
 #[macro_export]
-macro_rules! impl_base_module {
+macro_rules! impl_reflection {
     ($type:ty, $($impl_functions:item)*) => {
-        impl Module for $type {
-            fn module_name(&self) -> &'static str {
+        impl crate::core::reflect::Reflect for $type {
+            fn type_name(&self) -> &'static str {
                 stringify!($type)
             }
 
